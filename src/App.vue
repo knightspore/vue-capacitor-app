@@ -1,32 +1,70 @@
 <template>
-<main class="bg-gradient from-gray-200 to-blue-400 min-h-screen">
-    <section id="product-feed" class="px-4 py-6 grid gap-6">
-        <ProductCard 
-          v-for="product in apiProducts" 
-          :key="product.id"
-          :product="product"
-        />
-    </section>
+<main class="bg-indigo-300 min-h-screen">
+    
+    <!-- Loading Spinner -->
+    <transition name="fade">
+      <div class="min-h-screen flex" v-if="loading">
+        <svg class="animate-spin m-auto w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+      </div>
+    </transition>
+
+    <!-- Product Feed -->
+    <transition name="fade">
+      <section id="product-feed" class="px-4 py-6 grid gap-6 overflow-y-hidden">
+
+            <ProductCard 
+              :v-if="!loading"
+              v-for="product in apiProducts" 
+              :key="product.id"
+              :product="product"
+            />
+
+      </section>
+    </transition>
+
+<!-- Mobile Menu -->
+    <nav class="z-50 sticky bottom-0">
+      <MobileMenu/>
+    </nav>
+
 </main>
 </template>
 
 <script>
-import ProductCard from './components/ProductCard'
+import MobileMenu from './components/MobileMenu'
 import { getApiProducts } from './data/api'
+import ProductCard from './components/ProductCard'
 
 export default {
   name: "App",
   components: {
+    MobileMenu,
     ProductCard
   },
   data () {
     return {
-      apiProducts: null
+      apiProducts: null,
+      loading: true
     }
   },
   async mounted () {
-  const ref = await getApiProducts()
-  this.apiProducts = ref.data
+    this.loading = true
+    const ref = await getApiProducts()
+    this.apiProducts = ref.data
+    this.loading = false
   },
 };
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+</style>
