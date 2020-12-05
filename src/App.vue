@@ -1,6 +1,6 @@
 <template>
-<main class="bg-gradient-to-b from-blue-200 via-indigo-300 to-purple-400 min-h-screen">
-    <section id="product-feed" class="px-4 py-6 grid gap-4">
+<main class="bg-gray-200 min-h-screen">
+    <section id="product-feed" class="px-4 py-6 grid gap-6">
         <ProductCard 
           v-for="product in apiProducts" 
           :key="product.id"
