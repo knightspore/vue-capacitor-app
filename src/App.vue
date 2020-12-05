@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+<main class="bg-gradient-to-b from-blue-200 via-indigo-300 to-purple-400 min-h-screen">
+    <section id="product-feed" class="px-4 py-6 grid gap-4">
+        <ProductCard 
+          v-for="product in apiProducts" 
+          :key="product.id"
+          :product="product"
+        />
+    </section>
+</main>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ProductCard from './components/ProductCard'
+import { getApiProducts } from './data/api'
 
 export default {
   name: "App",
   components: {
-    HelloWorld
-  }
+    ProductCard
+  },
+  data () {
+    return {
+      apiProducts: null
+    }
+  },
+  async mounted () {
+  const ref = await getApiProducts()
+  this.apiProducts = ref.data
+  },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
