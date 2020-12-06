@@ -13,5 +13,5 @@
 }
 
 body {
-    @apply bg-gradient-to-b from-gray-800 to-purple-900;
+    @apply bg-gray-800;
 }

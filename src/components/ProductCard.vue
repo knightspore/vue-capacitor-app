@@ -1,5 +1,5 @@
 <template>
-<article class="relative flex flex-col justify-end w-full h-auto m-auto text-purple-100 bg-purple-900 bg-cover border-8 border-purple-500 rounded-lg shadow" :style="`background-image: url('${product.image}');`">
+<router-link  @click="$scrollToTop" :to="'/strain/' + product.id" class="relative flex flex-col justify-end w-full h-auto m-auto text-purple-100 bg-purple-900 bg-cover border-8 border-purple-500 rounded-lg shadow" :style="`background-image: url('${product.image}');`">
 
     <!-- SVG Background -->
     <svg class="absolute left-0 z-0 w-full text-purple-500 shadow-md fill-current h-3/4" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,7 @@
     <FavouriteBadge v-if="liked || !liked" :liked="liked"/>
 
     <!-- Name -->
-    <h2 class="mt-4 text-4xl font-black text-shadow-md" v-html="product.title" style="text-shadow: 4px 4px 0px rgba(76, 29, 149)"/>
+    <CardTitle v-if="product.title" :title="product.title"/>
 
     <!-- Strain Icon -->
     <section class="flex items-center mt-4 ml-1 gap-4">
@@ -37,11 +37,12 @@
     </div>
 
     </div>
-</article>
+</router-link>
 </template>
 
 <script>
 import OnSaleBadge from './ProductCard/OnSaleBadge'
+import CardTitle from './ProductCard/CardTitle'
 import FavouriteBadge from './ProductCard/FavouriteBadge'
 import StrainIcon from './ProductCard/StrainIcon'
 import ProductRating from './ProductCard/ProductRating'
@@ -49,6 +50,7 @@ import ProductRating from './ProductCard/ProductRating'
 export default {
     components: {
         OnSaleBadge,
+        CardTitle,
         FavouriteBadge,
         StrainIcon,
         ProductRating,

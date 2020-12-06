@@ -1,14 +1,10 @@
 <template>
-<div class="min-h-screen">
+<div class="pt-4 min-h-screen text-purple-50">
 
-    <div class="px-6 pt-6 grid gap-4">
-        <h1 class="text-3xl text-center uppercase font-bold  text-purple-50 leading-loose" style="text-shadow: 2px 2px 0px rgba(76, 29, 149)">Strain Finder</h1>
-    </div>
+    <BackButton v-if="$route.fullPath != '/'"/>
 
     <main>
-      <transition name="slide">
         <router-view/>
-      </transition>
     </main>
 </div>
     <!-- Mobile Menu -->
@@ -19,21 +15,14 @@
 
 <script>
 import MobileMenu from './components/MobileMenu'
+import BackButton from './components/BackButton'
 
 export default {
   name: "App",
   components: {
     MobileMenu,
+    BackButton
   },
+  
 };
 </script>
-
-<style>
-.slide-enter-active, .slide-leave-active {
-  transition: opacity .5s
-}
-
-.slide-enter-from, .slide-leave-to {
-  opacity: 0
-}
-</style>

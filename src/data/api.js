@@ -12,8 +12,13 @@ export const getApiProducts = async () => {
 }
 
 export const getApiProduct = async (id) => {
-    const products = await getApiProducts();
-    return products.data[id]
+    return await axios.get(base + '/products/' + id)
+    .then( function (response) {
+        return response
+    })
+    .catch(function (error) {
+        return error
+    })
 }
 
 
