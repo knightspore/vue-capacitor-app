@@ -9,7 +9,7 @@
     <div id="inner" class="z-20 flex flex-col justify-end h-full p-4 bg-purple-700 bg-opacity-30">
 
     <!-- Sale Badge -->
-    <OnSaleBadge v-if="onSale" :onSale="rand"/>
+    <OnSaleBadge v-if="rand" :onSale="rand"/>
     
     <!-- Heart Badge -->
     <FavouriteBadge v-if="liked || !liked" :liked="liked"/>
