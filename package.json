@@ -11,12 +11,13 @@
     "@capacitor/android": "2.4.4",
     "@capacitor/cli": "^2.4.4",
     "@capacitor/core": "^2.4.4",
-    "autoprefixer": "^9",
+    "autoprefixer": "^9.8.6",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "vue": "^3.0.0"
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-rc.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
