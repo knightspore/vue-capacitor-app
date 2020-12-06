@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div class="h-12 bg-gradient-to-b from-transparent to-indigo-300"></div>
-    <div class="bg-indigo-300">
-      <nav class="p-4 flex items-center justify-between text-gray-700">
+    <div>
+      <nav class="m-2 p-4 flex items-center justify-around text-purple-500 bg-gray-900 rounded-lg shadow-lg">
         <button>
           <!-- home -->
           <svg

@@ -1,5 +1,5 @@
 <template>
-<article class="relative h-80 m-auto w-full flex flex-col justify-end text-purple-100 bg-gray-900 shadow rounded-lg bg-cover" style="background-image: url('https://img.sensiseeds.com/en/feminized-seeds/sensi-seeds/hindu-kush-xl.png');">
+<article class="relative h-96 m-auto w-full flex flex-col justify-end text-purple-100 bg-gray-900 shadow rounded-lg bg-cover" :style="`background-image: url('${product.image}');`">
 
     <!-- SVG Background -->
     <svg class="z-0 absolute left-0 h-3/4 w-full text-purple-500 fill-current shadow-md rounded-bl-lg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
@@ -20,31 +20,31 @@
         <svg class="w-6 h-6 text-red-400" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
     </div>
 
+    <!-- Name -->
+    <h2 class="mt-4 text-4xl font-black text-shadow-md" v-html="product.title" style="text-shadow: 4px 4px 0px rgba(76, 29, 149)"/>
+
     <!-- Strain Icon -->
-    <div class="ml-1 flex items-center gap-2">
+    <div class="ml-1 mt-4 flex items-center gap-4">
         <div class="h-4 w-4 rounded-full overflow-hidden transform rotate-45 ring ring-gray-700" :class="{ 'bg-green-400' : sativa, 'bg-purple-700' : indica}">
             <div class="h-2 w-4 bg-purple-700" v-if="!sativa"></div>
             <div class="h-2 w-4 bg-purple-700" v-if="indica"></div>
             <div class="h-2 w-4 bg-green-400" v-if="!indica"></div>
             <div class="h-2 w-4 bg-green-400" v-if="sativa"></div>
         </div>
-        <h3 class="text-sm font-bold text-gray-200" v-if="sativa">Sativa</h3>
-        <h3 class="text-sm font-bold text-gray-200" v-else-if="indica">Indica</h3>
-        <h3 class="text-sm font-bold text-gray-200" v-else>Hybrid</h3>
+        <h3 class="text-base font-bold text-gray-200" v-if="sativa">Sativa</h3>
+        <h3 class="text-base font-bold text-gray-200" v-else-if="indica">Indica</h3>
+        <h3 class="text-base font-bold text-gray-200" v-else>Hybrid</h3>
     </div>
-
-    <!-- Name -->
-    <h2 class="mt-4 pr-10 text-3xl font-bold text-shadow-md" v-html="product.title"/>
 
     <!-- Info -->
     <div class="mt-2 flex items-center justify-between gap-4">
         <!-- Rating -->
         <div class="flex gap-1">
-            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 1 }" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 2 }" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 3 }" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 4 }" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 5 }" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 1 }" fill="none" stroke="rgba(76, 29, 149)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 2 }" fill="none" stroke="rgba(76, 29, 149)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 3 }" fill="none" stroke="rgba(76, 29, 149)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 4 }" fill="none" stroke="rgba(76, 29, 149)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+            <svg class="w-6 h-6 text-white text-shadow-sm fill-current" :class="{ 'text-yellow-500' : score >= 5 }" fill="none" stroke="rgba(76, 29, 149)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
         </div>
 
         <!-- View Product -->
