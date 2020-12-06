@@ -1,16 +1,19 @@
 <template>
-<main class="bg-indigo-300 min-h-screen">
+<main class="bg-gray-900 min-h-screen">
     
     <!-- Loading Spinner -->
     <transition name="fade">
       <div class="min-h-screen flex" v-if="loading">
-        <svg class="animate-spin m-auto w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+        <svg class="animate-spin m-auto w-12 h-12 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
       </div>
     </transition>
 
-    <div class="px-8 pt-6 flex items-center justify-between">
-      <h1 class="text-xl uppercase font-bold">Strain Finder</h1>
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    <div class="px-6 pt-6 grid gap-4">
+      <h1 class="text-3xl text-center uppercase font-bold  text-purple-200 leading-loose" style="text-shadow: 4px 4px 0px rgba(76, 29, 149)">Strain Finder</h1>
+      <form class="flex items-center gap-2" @submit.prevent>
+        <svg class="w-10 h-10 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <input v-model="search" class="p-2 rounded-full flex-1 bg-purple-900 shadow-inner placeholder-purple-500 text-purple-200" type="text" placeholder="Search...">
+      </form>
     </div>
 
     <!-- Product Feed -->
@@ -47,6 +50,7 @@ export default {
   },
   data () {
     return {
+      search: '',
       apiProducts: null,
       loading: true
     }
@@ -57,6 +61,13 @@ export default {
     this.apiProducts = ref.data
     this.loading = false
   },
+  methods: {
+    filteredList(input) {
+      return input.filter( product => {
+        return product.title.toLowerCase().includes(this.search.toLowerCase())
+    })
+    }
+  }
 };
 </script>
 

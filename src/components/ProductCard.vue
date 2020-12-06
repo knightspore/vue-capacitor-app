@@ -1,23 +1,24 @@
 <template>
-<article class="relative h-96 m-auto w-full flex flex-col justify-end text-purple-100 bg-gray-900 shadow rounded-lg bg-cover" :style="`background-image: url('${product.image}');`">
+<article class="relative h-96 m-auto w-full flex flex-col justify-end text-purple-100 bg-purple-900 border-purple-500 shadow rounded-lg bg-cover" :style="`background-image: url('${product.image}');`">
 
     <!-- SVG Background -->
     <svg class="z-0 absolute left-0 h-3/4 w-full text-purple-500 fill-current shadow-md rounded-bl-lg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
         <path d="M438 285C150 285 268 152 0 0L-0.000152588 285H438Z"/>
     </svg>
 
-    <div id="innder" class="z-20 p-4">
+
+    <div id="inner" class="z-20 h-full p-4 flex flex-col justify-end bg-purple-700 bg-opacity-30 rounded-lg">
 
     <!-- Sale Badge -->
-    <div v-if="rand" class="absolute m-2 -top-4 right-0 z-10 p-2 text-sm font-bold text-green-700 bg-green-300 rounded transform rotate-12 shadow-lg border-2 border-green-700">ON SALE!</div>
+    <div v-if="rand" class="animate-pulse absolute m-2 -top-4 right-0 z-10 p-2 text-sm font-bold text-green-700 bg-green-300 rounded transform rotate-12 shadow-lg border-2 border-green-700">ON SALE!</div>
     
     <!-- Heart Badge -->
-    <div v-if="!liked" @click="addToLikes()" class="absolute p-4 top-0 left-0">
-        <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+    <div v-if="!liked" class="absolute p-4 top-0 left-0">
+        <svg class="1-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
     </div>
 
-    <div v-if="liked" @click="removeFromLikes()" class="absolute m-4 top-0 left-0">
-        <svg class="w-6 h-6 text-red-400" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+    <div v-if="liked" class="absolute m-4 top-0 left-0">
+        <svg class="1-8 h-8 text-red-400" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
     </div>
 
     <!-- Name -->
@@ -67,7 +68,7 @@ export default {
         return {
             sativa: false,
             indica: false,
-            liked: Boolean,
+            liked: false,
             rand: Math.round(Math.random()),
             score: Math.round(Math.random()*5),
         }
@@ -79,23 +80,6 @@ export default {
         if (this.product.description.includes('Indica')  || this.product.description.includes('indica')) {
             this.indica = true;
         }
-        if (localStorage.products == null) {
-            localStorage.products = []
-        } else if (localStorage.products[this.product.id] == true) {
-            this.liked = true;
-        }
     },
-    methods: {
-        addToLikes() {
-            localStorage[this.product.id].liked = true
-            this.liked = true
-            console.log(localStorage.[this.product.id])
-        },
-
-        removeFromLikes() {
-            localStorage[this.product.id].liked = false
-            this.liked = false
-        },
-    }
 }
 </script>
