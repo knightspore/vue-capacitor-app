@@ -1,11 +1,11 @@
 <template>
-<main class="bg-gray-900 min-h-screen">
+<main class="min-h-screen bg-gradient-to-b from-gray-800 to-purple-900">
 
     <div class="px-6 pt-6 grid gap-4">
-        <h1 class="text-3xl text-center uppercase font-bold  text-purple-200 leading-loose" style="text-shadow: 4px 4px 0px rgba(76, 29, 149)">Strain Finder</h1>
+        <h1 class="text-3xl text-center uppercase font-bold  text-purple-50 leading-loose" style="text-shadow: 2px 2px 0px rgba(76, 29, 149)">Strain Finder</h1>
         <form class="flex items-center gap-2" @submit.prevent>
           <svg class="w-10 h-10 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <input v-model="search" class="p-2 rounded-full flex-1 bg-purple-900 shadow-inner placeholder-purple-500 text-purple-200" type="text" placeholder="Search...">
+          <input v-model="search" class="py-2 px-3 rounded-full flex-1 bg-purple-900 shadow-inner placeholder-purple-500 text-purple-200" type="text" placeholder="Search...">
         </form>
       </div>
     
@@ -24,6 +24,7 @@
               v-for="product in apiProducts" 
               :key="product.id"
               :product="product"
+              class="shadow-lg"
             />
 
       </section>
@@ -81,5 +82,4 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>
