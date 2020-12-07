@@ -1,6 +1,9 @@
 <template>
-<div class="h-96 mb-64 flex" v-if="loading">
-      <svg class="animate-spin m-auto w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+<div class="h-96 mb-96 flex" v-if="loading">
+    <svg class="m-auto w-12 h-12 animate-spin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+    <circle cx="50" cy="50" fill="none" stroke="#f5f3ff" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138">
+    </circle>
+    </svg>
 </div>
 </template>
 
