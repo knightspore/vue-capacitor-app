@@ -20,15 +20,15 @@
             </header>
 
             <!-- Image -->
-            <section v-if="product" class="relative sm:mt-2">
-                <FavouriteBadge/>
-                <OnSaleBadge v-if="rand" :onSale="rand"/>
+            <section v-if="product" class="sm:mt-2">  
                 <img class="border-8 border-b-0 border-purple-900 rounded-t-2xl" :src="product.image" alt="">
             </section>
 
             <!-- Description -->
-            <section v-if="product" class="p-3 bg-purple-400 border-8 border-purple-900 rounded-b-2xl">
-                <p class="prose prose-sm prose-gray" v-html="product.description"/>                
+            <section v-if="product" class="relative p-3 bg-purple-400 border-8 border-purple-900 rounded-b-2xl">
+                <FavouriteBadge/>
+                <OnSaleBadge v-if="rand" :onSale="rand"/>
+                <p class="my-4 prose prose-sm prose-gray" v-html="product.description"/>                
             </section>
         </div>
         </transition>
