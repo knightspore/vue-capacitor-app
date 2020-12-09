@@ -20,5 +20,3 @@ export const getApiProduct = async (id) => {
         return error
     })
 }
-
-

@@ -14,7 +14,7 @@
     <section id="product-feed" class="px-4 py-6 grid gap-6 overflow-y-hidden">
           <ProductCard 
             :v-if="!loading"
-            v-for="product in apiProducts" 
+            v-for="product in filteredList" 
             :key="product.id"
             :product="product"
             class="shadow-lg"
@@ -45,11 +45,15 @@ export default {
         this.apiProducts = ref.data
         this.loading = false
     },
-    methods: {
-        filteredList(input) {
-        return input.filter( product => {
-            return product.title.toLowerCase().includes(this.search.toLowerCase())
-        })
+    computed: {
+      filteredList() {
+        if (this.apiProducts) {
+            return this.apiProducts.filter( product => {
+              return product.title.toLowerCase().includes(this.search.toLowerCase())
+            })
+        } else {
+            return false
+          }
         }
     }
 }
