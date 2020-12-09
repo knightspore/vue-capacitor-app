@@ -11,7 +11,6 @@
   </transition>
 
   <!-- Product Feed -->
-  <transition name="fade">
     <section id="product-feed" class="px-4 py-6 grid gap-6 overflow-y-hidden">
           <ProductCard 
             :v-if="!loading"
@@ -22,7 +21,6 @@
           />
 
     </section>
-  </transition>
 </template>
 
 <script>
