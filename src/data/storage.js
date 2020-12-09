@@ -13,6 +13,7 @@ export const setLike = async (id, boolean) => {
         key: id,
         value: boolean
     })
+    console.log(id + ' set to ' + boolean)
 }
 
 // Process Likes on User Click

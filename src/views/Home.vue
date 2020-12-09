@@ -19,7 +19,6 @@
             :product="product"
             class="shadow-lg"
           />
-
     </section>
 </template>
 
