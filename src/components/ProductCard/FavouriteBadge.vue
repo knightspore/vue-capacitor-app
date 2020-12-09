@@ -29,17 +29,12 @@ export default {
     },
     methods: {
         async clickEventHandler (id, bool) {
-            this.clickAnimation()
-
+            this.onClickAnimation()
             // This is a 'faker' to update the clientside visual
             this.showLiked = !this.showLiked
-
             await setLike(id, !bool)
-            
-            // FIX - this should set product ^id to !^bool
-            console.log(`#${id}'s value set to ${!bool}`)
         },
-        async clickAnimation() {
+        async onClickAnimation() {
             this.shouldAnimatePing = true;
             await sleep(200)
             this.shouldAnimatePing = false;

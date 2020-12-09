@@ -3,6 +3,7 @@ import Home from "@/views/Home.vue";
 import Favourites from "@/views/Favourites.vue"
 import Profile from "@/views/Profile.vue"
 import Strain from "@/views/Strain.vue"
+import Chat from "@/views/Chat.vue"
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
         path: '/strain/:id',
         name: Strain,
         component: Strain,
+    },
+    {
+        path: '/chat',
+        name: Chat,
+        component: Chat,
     }
 ]
 
