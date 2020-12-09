@@ -32,7 +32,7 @@
     <div class="flex items-center justify-between mt-2 gap-4">
         <!-- Rating -->
         <section>
-            <ProductRating v-if="true" :score="product.score"/>
+            <ProductRating v-if="true" :score="product.ratings"/>
         </section>
 
         <!-- View Product -->
