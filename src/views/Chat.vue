@@ -1,7 +1,21 @@
 <template>
-    <div></div>
+    <div>
+        <button @click="signInWithGoogle">Sign In</button>
+        <button @click="signOut">Sign Out</button>
+    </div>
 </template>
 
 <script>
-export default {}
+import { auth } from '../data/firebase'
+export default {
+    methods: {
+        signInWithGoogle() {
+            const provider = new auth.GoogleAuthProvider()
+            auth.signInWithPopup(provider)
+        },
+        signOut() {
+            auth.signOut()
+        }
+    }
+}
 </script>
