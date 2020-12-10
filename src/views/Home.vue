@@ -11,26 +11,21 @@
   </transition>
 
   <!-- Product Feed -->
-    <section id="product-feed" class="px-4 py-6 grid gap-6 overflow-y-hidden">
-          <ProductCard 
-            :v-if="!loading"
-            v-for="product in filteredList" 
-            :key="product.id"
-            :product="product"
-            class="shadow-lg"
-          />
-    </section>
+  <div>
+        <ProductFeed :products="filteredList"/>
+  </div>
+
 </template>
 
 <script>
 import LoadingSpinner from '../components/LoadingSpinner'
-import ProductCard from '../components/ProductCard'
+import ProductFeed from '../components/ProductFeed'
 import { getApiProducts } from '../data/api'
 
 export default {
     components: {
       LoadingSpinner,
-      ProductCard,
+      ProductFeed,
     },
     data () {
         return {

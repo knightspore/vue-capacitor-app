@@ -1,6 +1,12 @@
 import { Plugins } from '@capacitor/core'
 const { Storage } = Plugins
 
+// Get all
+export const getAllLikes = async () => {
+    const likes = await Storage.values()
+    return likes
+}
+
 // Check if Product is <3
 export const getLike = async (id) => {
     const ret = await Storage.get({key: id})
